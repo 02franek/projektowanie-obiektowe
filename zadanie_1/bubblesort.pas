@@ -18,13 +18,13 @@ begin
 	WriteLn;
 end;
 
-procedure PopulateArray(var arr : TNumArray);
+procedure PopulateArray(var arr : TNumArray; minVal : integer; maxVal : integer; count : integer);
 var
 	idx : integer;
 begin
-	for idx := 1 to 50 do
+	for idx := 1 to count do
 	begin
-		arr[idx] := Random(101);
+		arr[idx] := Random(maxVal - minVal + 1) + minVal;
 	end;
 end;
 
@@ -49,7 +49,7 @@ end;
 begin
 	ItemCount := 50;
 	Randomize;
-	PopulateArray(RandNumArray);
+	PopulateArray(RandNumArray, 10, 30, ItemCount);
 	PrintArray(RandNumArray);
 	WriteLn;
 	SortArray(RandNumArray, ItemCount);
