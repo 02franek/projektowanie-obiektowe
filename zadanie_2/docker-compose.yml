@@ -1,0 +1,14 @@
+services:
+  app:
+    image: kprzystalski/projobj-php:latest
+    container_name: symfony_app
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/home/student/projobj
+    command: >
+      bash -c "
+      composer install &&
+      php bin/console doctrine:migrations:migrate --no-interaction --allow-no-migration &&
+      symfony serve --port=8000
+      "

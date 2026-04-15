@@ -1,0 +1,9 @@
+services:
+  app:
+    image: kprzystalski/projobj-php:latest
+    container_name: symfony_app
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/home/student/projobj
+    command: tail -f /dev/null
