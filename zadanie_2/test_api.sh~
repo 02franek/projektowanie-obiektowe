@@ -1,0 +1,11 @@
+#!/bin/bash
+
+BASE_URL="http://localhost:8000/api/products"
+
+echo "TESTING PRODUCTS ENDPOINTS"
+echo ""
+
+curl -s -X POST "$BASE_URL" \
+     -H "Content-Type: application/json" \
+     -d '{"name": "Kremówka", "price": 21.36, "description": "super jest ta kremówka"}'
+echo -e "\n\n"
