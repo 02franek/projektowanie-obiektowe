@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.context.annotation.Lazy
 
 data class User(
     val id: Int,
@@ -22,7 +24,10 @@ data class AuthRequest(
 
 @RestController
 @RequestMapping("/api")
-class ApiController(private val authService: AuthService) {
+class ApiController(
+    private val eagerAuthService: AuthService,
+    @Lazy private val lazyAuthService: AuthService
+) {
 
     @GetMapping("/users")
     fun getUsers(): List<User> {
@@ -35,8 +40,16 @@ class ApiController(private val authService: AuthService) {
     }
 
     @PostMapping("/auth")
-    fun authenticateUser(@RequestBody request: AuthRequest): Map<String, Any> {
-        val isSuccess = authService.authenticate(request.username, request.password)
+    fun authenticateUser(
+        @RequestBody request: AuthRequest,
+        @RequestParam(defaultValue = "eager") type: String
+    ): Map<String, Any> {
+
+        val chosenService = when (type) {
+            "lazy" -> lazyAuthService
+            else -> eagerAuthService
+        }
+        val isSuccess = chosenService.authenticate(request.username, request.password)
 
         if (isSuccess) {
             return mapOf("success" to true, "message" to "You've successfully logged in.")
