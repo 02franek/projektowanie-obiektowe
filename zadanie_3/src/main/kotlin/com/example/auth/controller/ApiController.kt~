@@ -1,0 +1,19 @@
+package com.example.auth.controller
+
+data class User(
+    val id: Int,
+    val username: String,
+    val role: String,
+    val salary: Int
+)
+
+@RestController
+@RequestMapping("/api")
+class ApiController {
+    @GetMapping("/users")
+    fun getUsers(): List<User> {
+        return listOf(
+            User()
+        )
+    }
+}
