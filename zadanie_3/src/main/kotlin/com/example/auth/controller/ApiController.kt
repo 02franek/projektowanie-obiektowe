@@ -1,5 +1,7 @@
 package com.example.auth.controller
 
+import com.example.auth.service.AuthService
+
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.PostMapping
@@ -20,7 +22,8 @@ data class AuthRequest(
 
 @RestController
 @RequestMapping("/api")
-class ApiController {
+class ApiController(private val authService: AuthService) {
+
     @GetMapping("/users")
     fun getUsers(): List<User> {
         return listOf(
@@ -33,7 +36,7 @@ class ApiController {
 
     @PostMapping("/auth")
     fun authenticateUser(@RequestBody request: AuthRequest): Map<String, Any> {
-        val isSuccess = request.password == "password"
+        val isSuccess = authService.authenticate(request.username, request.password)
 
         if (isSuccess) {
             return mapOf("success" to true, "message" to "You've successfully logged in.")

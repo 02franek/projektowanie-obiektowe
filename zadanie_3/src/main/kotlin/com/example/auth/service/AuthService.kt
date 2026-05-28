@@ -8,8 +8,12 @@ class AuthService {
         println("[EAGER] AuthService is being created.")
     }
 
-    fun authenticate(username: String): Boolean {
-        return true;
+    fun authenticate(username: String, password: String): Boolean {
+        if ((username == "admin" && password == "password") ||
+            (username == "slawosz uznanski" && password == "poznanski")) {
+            return true;
+        }
+        return false;
     }
 }
 
