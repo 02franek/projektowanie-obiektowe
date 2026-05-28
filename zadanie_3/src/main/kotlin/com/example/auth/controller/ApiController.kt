@@ -2,13 +2,20 @@ package com.example.auth.controller
 
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.RequestBody
 
 data class User(
     val id: Int,
     val username: String,
     val role: String,
     val salary: Int
+)
+
+data class AuthRequest(
+    val username: String,
+    val password: String
 )
 
 @RestController
@@ -22,5 +29,15 @@ class ApiController {
 	        User(3, "slawomir poznansko-uznanski", "muzyk", 22222),
 	        User(4, "admin", "informatyk", 2000)
         )
+    }
+
+    @PostMapping("/auth")
+    fun authenticateUser(@RequestBody request: AuthRequest): Map<String, Any> {
+        val isSuccess = request.password == "password"
+
+        if (isSuccess) {
+            return mapOf("success" to true, "message" to "You've successfully logged in.")
+        }
+        return mapOf("success" to false, "message" to "Wrong username or password.")
     }
 }
