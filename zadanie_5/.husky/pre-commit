@@ -1,0 +1,2 @@
+cd zadanie_5
+npx lint-staged
