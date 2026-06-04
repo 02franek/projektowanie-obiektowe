@@ -1,27 +1,18 @@
 package main
 
 import (
-	"net/http"
+	"weather-app/controllers"
+	"weather-app/db"
 
 	"github.com/labstack/echo/v4"
 )
 
-type WeatherController struct{}
-
-func (wc *WeatherController) HandleWeather(c echo.Context) error {
-	method := c.Request().Method
-
-	return c.JSON(http.StatusOK, map[string]string{
-		"message": "Weather controller test message",
-		"method": method,
-		"status": "THis is mock reponse",
-	})
-}
 
 func main() {
-	e := echo.New()
+	db.InitDB()
 
-	wController := &WeatherController{}
+	e := echo.New()
+	wController := &controllers.WeatherController{}
 
 	e.GET("/weather", wController.HandleWeather)
 	e.POST("/weather", wController.HandleWeather)
