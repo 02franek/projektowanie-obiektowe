@@ -3,7 +3,7 @@ package com.example.auth.service
 import org.springframework.stereotype.Service
 import org.springframework.context.annotation.Lazy
 
-interface AuthService {
+fun interface AuthService {
     fun authenticate(username: String, password: String): Boolean
 }
 

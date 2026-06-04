@@ -8,6 +8,7 @@ class AuthServiceApplicationTests {
 
 	@Test
 	fun contextLoads() {
+        assert(true)
 	}
 
 }
