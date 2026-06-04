@@ -24,11 +24,28 @@ func (wc *WeatherController) HandleWeather(c echo.Context) error {
 			})
 		}
 
-		return c.JSON(http.StatusOK, weatherData)
+		var existingWeather models.Weather
+
+		result := db.DB.Where("location = ?", weatherData.Location).First(&existingWeather)
+
+		if result.Error == nil {
+			existingWeather.Temperature = weatherData.Temperature
+			existingWeather.Precipitation = weatherData.Precipitation
+			existingWeather.Description = weatherData.Description
+			db.DB.Save(&existingWeather)
+
+			db.DB.Model(&existingWeather).Association("Forecasts").Replace(weatherData.Forecasts)
+
+			existingWeather.Forecasts = weatherData.Forecasts
+			return c.JSON(http.StatusOK, existingWeather)
+		} else {
+			db.DB.Create(weatherData)
+			return c.JSON(http.StatusOK, weatherData)
+		}
 	}
 
 	var weathers []models.Weather
-	db.DB.Find(&weathers)
+	db.DB.Preload("Forecasts").Find(&weathers)
 
 	return c.JSON(http.StatusOK, weathers)
 }

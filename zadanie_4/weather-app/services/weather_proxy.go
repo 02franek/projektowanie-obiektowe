@@ -22,6 +22,12 @@ type weatherResponse struct {
 		Temperature float64 `json:"temperature_2m"`
 		Precipiration float64 `json:"precipitation"`
 	} `json:"current"`
+	Daily struct {
+		Time []string `json:"time"`
+		TemperatureMax []float64 `json:"temperature_2m_max"`
+		TemperatureMin []float64 `json:"temperature_2m_min"`
+		PrecipitationSum []float64 `json:"precipitation_sum"`
+	} `json:"daily"`
 }
 
 func (wp *WeatherProxy) FetchWeather(city string) (*models.Weather, error) {
@@ -45,7 +51,7 @@ func (wp *WeatherProxy) FetchWeather(city string) (*models.Weather, error) {
 	lon := geo.Results[0].Longitude
 	resolvedName := geo.Results[0].Name
 
-	weatherURL := fmt.Sprintf("https://api.open-meteo.com/v1/forecast?latitude=%f&longitude=%f&current=temperature_2m,precipitation", lat, lon)
+	weatherURL := fmt.Sprintf("https://api.open-meteo.com/v1/forecast?latitude=%f&longitude=%f&current=temperature_2m,precipitation&daily=temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=auto&forecast_days=3", lat, lon)
 	wRes, err := http.Get(weatherURL)
 	if err != nil {
 		return nil, err
@@ -57,11 +63,22 @@ func (wp *WeatherProxy) FetchWeather(city string) (*models.Weather, error) {
 		return nil, err
 	}
 
+	var forecasts []models.Forecast
+	for i := range wData.Daily.Time {
+		forecasts = append(forecasts, models.Forecast{
+			Date: wData.Daily.Time[i],
+			MaxTemperature: wData.Daily.TemperatureMax[i],
+			MinTemperature: wData.Daily.TemperatureMin[i],
+			PrecipitationSum: wData.Daily.PrecipitationSum[i],
+		})
+	}
+
 	weather := &models.Weather{
 		Location: resolvedName,
 		Temperature: wData.Current.Temperature,
 		Precipitation: wData.Current.Precipiration,
 		Description: "Provided by Open-Meteo",
+		Forecasts: forecasts,
 	}
 	
 	return weather, nil

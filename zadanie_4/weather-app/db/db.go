@@ -18,7 +18,7 @@ func InitDB() {
 		log.Fatal("Couldn't connect to the database:", err)
 	}
 
-	DB.AutoMigrate(&models.Weather{})
+	DB.AutoMigrate(&models.Weather{}, &models.Forecast{})
 
 	seed()
 }
