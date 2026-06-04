@@ -13,3 +13,67 @@
 Kod: [Link do zadania 1](https://github.com/02franek/projektowanie-obiektowe/tree/main/zadanie_1)
 
 ##
+
+### Zadanie 2 Symfony PHP
+
+✅ 3.0 Należy stworzyć jeden model z kontrolerem z produktami, zgodnie z CRUD (JSON) [Link do commita 1](https://github.com/02franek/projektowanie-obiektowe/commit/71acc2793e90fb5c37710f0347cce29fc3f9ddaf)
+
+✅ 3.5 Należy stworzyć skrypty do testów endpointów via curl (JSON) [Link do commita 2](https://github.com/02franek/projektowanie-obiektowe/commit/ba494e5d44b5871cb02f845e86c687649f3f3196)
+
+❌ 4.0 Należy stworzyć dwa dodatkowe kontrolery wraz z modelami (JSON)
+
+❌ 4.5 Należy stworzyć widoki do wszystkich kontrolerów
+
+❌ 5.0 Stworzenie panelu administracyjnego
+###
+Kod: [Link do zadania 2](https://github.com/02franek/projektowanie-obiektowe/tree/main/zadanie_2)
+
+##
+
+### Zadanie 3 Kotlin Spring Boot
+
+✅ 3.0 Należy stworzyć jeden kontroler wraz z danymi wyświetlanymi z listy na endpoint’cie w formacie JSON - Kotlin + Spring Boot [Link do commita 1](https://github.com/02franek/projektowanie-obiektowe/commit/e11098b3271144b4f76a94cf7382078739326521)
+
+✅ 3.5 Należy stworzyć klasę do autoryzacji (mock) jako Singleton w formie eager [Link do commita 2](https://github.com/02franek/projektowanie-obiektowe/commit/3eef8435da7f58808068b2ebcf500d7de658f4ce)
+
+✅ 4.0 Należy obsłużyć dane autoryzacji przekazywane przez użytkownika [Link do commita 3](https://github.com/02franek/projektowanie-obiektowe/commit/bbd025afaa48daaee458660d1ec93df4f3d76016)
+
+✅ 4.5 Należy wstrzyknąć singleton do głównej klasy via @Autowired lub kontruktor (constructor injection) [Link do commita 4](https://github.com/02franek/projektowanie-obiektowe/commit/f9c558ada261e7b9f28a504495581d70d746dc27)
+
+✅ 5.0 Obok wersji Eager do wyboru powinna być wersja Singletona w wersji lazy [Link do commita 5](https://github.com/02franek/projektowanie-obiektowe/commit/0ccc4206ed82308a491dd0c62c83ec931ea3ee44)
+###
+Kod: [Link do zadania 3](https://github.com/02franek/projektowanie-obiektowe/tree/main/zadanie_3)
+
+##
+
+### Zadanie 4 Go Echo (Pogoda)
+
+✅ 3.0 Należy stworzyć aplikację we frameworki echo w j. Go, która będziemiała kontroler Pogody, która pozwala na pobieranie danych o pogodzie [Link do commita 1](https://github.com/02franek/projektowanie-obiektowe/commit/cc1c7779ee03352a0934967ccd25a9b8cd2c6416)
+
+✅ 3.5 Należy stworzyć model Pogoda (lub Giełda) wykorzystując gorm, a dane załadować z listy przy uruchomieniu [Link do commita 2](https://github.com/02franek/projektowanie-obiektowe/commit/fa5e79ab64315c5ac841b277a5af7748e710e1c9)
+
+✅ 4.0 Należy stworzyć klasę proxy, która pobierze dane z serwisu zewnętrznego podczas zapytania do naszego kontrolera [Link do commita 3](https://github.com/02franek/projektowanie-obiektowe/commit/a1e4c200b98135fc94fae10918b26847f8b21ce6)
+
+✅ 4.5 Należy zapisać pobrane dane z zewnątrz do bazy danych [Link do commita 4](https://github.com/02franek/projektowanie-obiektowe/commit/aba51e169c3c0a3453a7947bf40c24155cdc1b4c)
+
+✅ 5.0 Należy rozszerzyć endpoint na więcej niż jedną lokalizację zwracając JSONa [Link do commita 5](https://github.com/02franek/projektowanie-obiektowe/commit/f12090e1ae2f85b3f183aec49754324f39958b4b)
+###
+Kod: [Link do zadania 4](https://github.com/02franek/projektowanie-obiektowe/tree/main/zadanie_4/weather-app)
+
+##
+
+### Zadanie 5 React
+
+✅ 3.0 W ramach projektu należy stworzyć komponenty Produkty orazPłatności; komponent Produkty powinien pobierać listę produktów z aplikacji serwerowej, natomiast komponent Płatności powinien wysyłać dane płatności do aplikacji serwerowej [Link do commita 1](https://github.com/02franek/projektowanie-obiektowe/commit/12a24f43f3d6869b82474012b5b7a1cf1cbf988a)
+
+✅ 3.5 Należy dodać komponent Koszyk wraz z osobnym widokiem; aplikacja powinna umożliwiać przechodzenie pomiędzy widokami przy użyciu routingu [Link do commita 2](https://github.com/02franek/projektowanie-obiektowe/commit/8097035a4660f805fc86914c2cf2ae23644ed913)
+
+✅ 4.0 Dane pomiędzy komponentami, takimi jak Produkty, Koszyk i Płatności, powinny być przekazywane z wykorzystaniem React  hooks, np. useState, useEffect lub useContext [Link do commita 3](https://github.com/02franek/projektowanie-obiektowe/commit/7e62f14dccbcaabd2fe8b48efdc8fc15882f3acc)
+
+✅ 4.5 Należy przygotować konfigurację umożliwiającą uruchomienie aplikacji klienckiej oraz serwerowej w kontenerach Docker za pomocą docker-compose [Link do commita 4](https://github.com/02franek/projektowanie-obiektowe/commit/55f8138041a1d82b70d4dc97a1ed54d6f117b045)
+
+✅ 5.0 Należy wykorzystać bibliotekę axios do komunikacji z serwerem oraz skonfigurować obsługę CORS, aby frontend mógł poprawnie komunikować się z backendem [Link do commita 5](https://github.com/02franek/projektowanie-obiektowe/commit/55f8138041a1d82b70d4dc97a1ed54d6f117b045)
+###
+Kod: [Link do zadania 5](https://github.com/02franek/projektowanie-obiektowe/tree/main/zadanie_5)
+
+##
