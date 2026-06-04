@@ -1,51 +1,94 @@
 package controllers
 
 import (
+	"errors"
 	"net/http"
 	"weather-app/db"
 	"weather-app/models"
 	"weather-app/services"
 
 	"github.com/labstack/echo/v4"
+	"gorm.io/gorm"
 )
 
 type WeatherController struct{
 	Proxy services.WeatherProxy
 }
 
-func (wc *WeatherController) HandleWeather(c echo.Context) error {
-	locationParam := c.QueryParam("location")
+type MultipleCitiesRequest struct {
+	Locations []string `json:"locations"`
+}
 
-	if locationParam != "" {
-		weatherData, err := wc.Proxy.FetchWeather(locationParam)
-		if err != nil {
-			return c.JSON(http.StatusNotFound, map[string]string{
-				"error": err.Error(),
+func (wc *WeatherController) HandleWeather(c echo.Context) error {
+	method := c.Request().Method
+
+	if method == http.MethodGet {
+		locationParam := c.QueryParam("location")
+
+		if locationParam != "" {
+			weatherData, err := wc.Proxy.FetchWeather(locationParam)
+			if err != nil {
+				return c.JSON(http.StatusNotFound, map[string]string{
+					"error": err.Error(),
+				})
+			}
+
+			savedWeather := saveOrUpdateWeather(weatherData)
+			return c.JSON(http.StatusOK, savedWeather)
+		}
+
+		var weathers []models.Weather
+		db.DB.Preload("Forecasts").Find(&weathers)
+		return c.JSON(http.StatusOK, weathers)
+	}
+
+	if method == http.MethodPost {
+		var req MultipleCitiesRequest
+
+		if err := c.Bind(&req); err != nil {
+			return c.JSON(http.StatusBadRequest, map[string]string{
+				"error": "Incorrect JSON data format",
 			})
 		}
 
-		var existingWeather models.Weather
+		var results []models.Weather
 
-		result := db.DB.Where("location = ?", weatherData.Location).First(&existingWeather)
+		for _, location := range req.Locations {
+			weatherData, err := wc.Proxy.FetchWeather(location)
+			if err == nil {
+				savedWeather := saveOrUpdateWeather(weatherData)
+				results = append(results, savedWeather)
+			}
+		}
 
-		if result.Error == nil {
-			existingWeather.Temperature = weatherData.Temperature
-			existingWeather.Precipitation = weatherData.Precipitation
-			existingWeather.Description = weatherData.Description
-			db.DB.Save(&existingWeather)
+		return c.JSON(http.StatusOK, results)
+	}
 
-			db.DB.Model(&existingWeather).Association("Forecasts").Replace(weatherData.Forecasts)
+	return c.JSON(http.StatusMethodNotAllowed, map[string]string{
+		"error": "Method not allowed",
+	})
+		
+}
 
-			existingWeather.Forecasts = weatherData.Forecasts
-			return c.JSON(http.StatusOK, existingWeather)
-		} else {
-			db.DB.Create(weatherData)
-			return c.JSON(http.StatusOK, weatherData)
+func saveOrUpdateWeather(weatherData *models.Weather) models.Weather {
+	var existingWeather models.Weather
+
+	result := db.DB.Where("location = ?", weatherData.Location).First(&existingWeather)
+
+	if result.Error != nil {
+		if errors.Is(result.Error, gorm.ErrRecordNotFound) {
+				db.DB.Create(weatherData)
+			return *weatherData
 		}
 	}
 
-	var weathers []models.Weather
-	db.DB.Preload("Forecasts").Find(&weathers)
+	existingWeather.Temperature = weatherData.Temperature
+	existingWeather.Precipitation = weatherData.Precipitation
+	existingWeather.Description = weatherData.Description
+	db.DB.Save(&existingWeather)
 
-	return c.JSON(http.StatusOK, weathers)
+	db.DB.Model(&existingWeather).Association("Forecasts").Replace(weatherData.Forecasts)
+	existingWeather.Forecasts = weatherData.Forecasts
+
+	return existingWeather
 }
