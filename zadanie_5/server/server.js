@@ -29,7 +29,7 @@ const products = [
 ];
 
 app.get("/api/products", (req, res) => {
-  console.log("/api/products received GET request ");
+  console.log("/api/products received GET request");
   res.json(products);
 });
 
