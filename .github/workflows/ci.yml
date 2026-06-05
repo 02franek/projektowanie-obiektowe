@@ -1,0 +1,51 @@
+name: CI Pipeline (zadanie_5)
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  lint:
+    name: Linter Eslint
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./zadanie_5
+    steps:
+      - name: Donwload code
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: Install packages
+        run: npm install
+
+      - name: Verify frontend code (lint)
+        run: npx eslint "client/**/*.{ts,tsx,js,jsx}" --config client/eslint.config.js
+
+      - name: Verify backend code (lint)
+        run: npx eslint "server/**/*.js" --config server/eslint.config.js
+
+  codeql:
+    name: CodeQL Analysis
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+      actions: read
+      contents: read
+    steps:
+      - name: Donwload code
+        uses: actions/checkout@4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: javascript
+
+      - name: Run CodeQL analysis
+        uses: github/codeql-action/analyze@v3
