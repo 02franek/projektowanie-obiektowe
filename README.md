@@ -77,3 +77,28 @@ Kod: [Link do zadania 4](https://github.com/02franek/projektowanie-obiektowe/tre
 Kod: [Link do zadania 5](https://github.com/02franek/projektowanie-obiektowe/tree/main/zadanie_5)
 
 ##
+
+### Zadanie 6 Code Smells
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=02franek_projektowanie-obiektowe&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=02franek_projektowanie-obiektowe)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=02franek_projektowanie-obiektowe&metric=bugs)](https://sonarcloud.io/summary/new_code?id=02franek_projektowanie-obiektowe)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=02franek_projektowanie-obiektowe&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=02franek_projektowanie-obiektowe)
+
+
+✅ 3.0 Należy skonfigurować husky + lint-staged uruchamianie lintowania przed commitem [Link do commita 1](https://github.com/02franek/projektowanie-obiektowe/commit/cd0ca61e617b4705f3c05fcbf02c6ed7650dff25)
+
+✅ 3.5 Należy wyeliminować wszystkie bugi w kodzie w Sonarze (kod aplikacji klienckiej) [Link do commita 2](https://github.com/02franek/projektowanie-obiektowe/commit/688ec47facb42320c5962d2d5f0db1386d2f0618)
+
+✅ 4.0 Przeskanować oraz naprawić dowolny projekt narzędziem CodeQL [Link do commita 3](https://github.com/02franek/projektowanie-obiektowe/commit/4deca510de6bf922195dd193ee0db9d681bb0a90)
+
+✅ 4.5 Należy usunąć problemy typu Code Smell w kodzie w Sonarze (kotlin, go, js). Należy dodać badge z Sonara [Link do commita 4](https://github.com/02franek/projektowanie-obiektowe/commit/e8a0d856cfc9cd1c28aa5aa642c4cd38e6b634e5)
+
+✅ 5.0 Skonfigurować Github Actions z linterem oraz CodeQL [Link do commita 5](https://github.com/02franek/projektowanie-obiektowe/commit/9af40d5b78f7fee05dcf4de9e6cccda0aed75e73) [Link do commita 6](https://github.com/02franek/projektowanie-obiektowe/commit/8c3ae80f8d2e1090cf4bd6a800205eebc2ba294f)
+###
+Kod (3.0, 3.5, 4.0, 4.5, 5.0): [Link do zadania 5](https://github.com/02franek/projektowanie-obiektowe/tree/main/zadanie_5)
+
+Kod (4.5, 5.0): [Link do zadania 4](https://github.com/02franek/projektowanie-obiektowe/tree/main/zadanie_4/weather-app)
+
+Kod (4.5, 5.0): [Link do zadania 3](https://github.com/02franek/projektowanie-obiektowe/tree/main/zadanie_3)
+
+##
