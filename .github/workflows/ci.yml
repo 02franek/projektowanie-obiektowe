@@ -23,7 +23,7 @@ jobs:
           node-version: "24"
 
       - name: Install packages
-        run: npm install
+        run: npm install && cd client && npm install && cd ../server && npm install
 
       - name: Verify frontend code (lint)
         run: npx eslint "client/**/*.{ts,tsx,js,jsx}" --config client/eslint.config.js
@@ -40,7 +40,7 @@ jobs:
       contents: read
     steps:
       - name: Donwload code
-        uses: actions/checkout@4
+        uses: actions/checkout@v4
 
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
