@@ -4,6 +4,7 @@ import Products from "./components/Products";
 import Payments from "./components/Payments";
 import Cart from "./components/Cart";
 import { useCart } from "./context/CartContext";
+import Register from "./components/Register";
 
 function App() {
   const { state } = useCart();
@@ -20,6 +21,9 @@ function App() {
         <Link style={{ padding: "10px" }} to="/cart">
           Koszyk ({state.totalPrice} PLN)
         </Link>
+        <Link style={{ padding: "10px" }} to="/register">
+          Rejestracja
+        </Link>
       </nav>
 
       <div>
@@ -27,6 +31,7 @@ function App() {
           <Route path="/" element={<Products />} />
           <Route path="/payments" element={<Payments />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </div>
     </BrowserRouter>
