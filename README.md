@@ -102,3 +102,19 @@ Kod (4.5, 5.0): [Link do zadania 4](https://github.com/02franek/projektowanie-ob
 Kod (4.5, 5.0): [Link do zadania 3](https://github.com/02franek/projektowanie-obiektowe/tree/main/zadanie_3)
 
 ##
+
+### Zadanie 7 Swift Vapor
+
+✅ 3.0 Należy stworzyć kontroler wraz z modele Produktów zgodny z CRUD w ORM Fluent [Link do commita 1](https://github.com/02franek/projektowanie-obiektowe/commit/d86a6f3286b2e5b15c96a3014cdee7cd6a4b2ba7)
+
+❌ 3.5 Należy stworzyć szablony w Leaf
+
+❌ 4.0 Należy stworzyć drugi model oraz kontroler Kategorii wraz z relacją
+
+❌ 4.5 Należy wykorzystać Redis do przechowywania danych
+
+❌ 5.0 Wrzucić aplikację na heroku
+###
+Kod: [Link do zadania 7](https://github.com/02franek/projektowanie-obiektowe/tree/main/zadanie_7/EcommerceApp)
+
+##
