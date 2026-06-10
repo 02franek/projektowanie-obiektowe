@@ -1,6 +1,6 @@
 .vscode/
 .gradle
-*.env
+*.env*
 build
 bin
 codeql-db/
