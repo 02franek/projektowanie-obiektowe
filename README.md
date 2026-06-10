@@ -118,3 +118,19 @@ Kod (4.5, 5.0): [Link do zadania 3](https://github.com/02franek/projektowanie-ob
 Kod: [Link do zadania 7](https://github.com/02franek/projektowanie-obiektowe/tree/main/zadanie_7/EcommerceApp)
 
 ##
+
+### Zadanie 8 Testy (do Zadania 5)
+
+✅ 3.0 Przetestuj formularz rejestracji użytkownika pod kątem walidacji pól obowiązkowych oraz zachowania aplikacji po wprowadzeniu niepoprawnego formatu adresu e-mail [Link do commita 1](https://github.com/02franek/projektowanie-obiektowe/commit/c543afcae4f9f7d663ef46f082a4687016cac8bc)
+
+❌ 3.5 Przeprowadź testy bezpieczeństwa typu Cross-Site Scripting (XSS), próbując wstrzyknąć złośliwy kod JavaScript w aplikacji z Reactem
+
+❌ 4.0 Przetestuj działanie koszyka zakupowego przy jednoczesnym otwarciu aplikacji w kilku osobnych kartach tej samej przeglądarki, sprawdzając spójność stanów zamówienia
+
+❌ 4.5 Do zadania z Reacta należy dodać formularz logowania. Następnie przeprowadź testy podatności na ataki typu Cross-Site Request Forgery (CSRF), próbując wymusić nieautoryzowaną zmianę ustawień konta spreparowanym linkiem, podczas gdy użytkownik posiada aktywną sesję w innej karcie.
+
+❌ 5.0 Stwórz scenariusz End-to-End w Playwright (minimum 50 asercji)
+###
+Kod: [Link do zadania 5](https://github.com/02franek/projektowanie-obiektowe/tree/main/zadanie_5)
+
+##
