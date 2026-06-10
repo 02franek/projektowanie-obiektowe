@@ -134,3 +134,19 @@ Kod: [Link do zadania 7](https://github.com/02franek/projektowanie-obiektowe/tre
 Kod: [Link do zadania 5](https://github.com/02franek/projektowanie-obiektowe/tree/main/zadanie_5)
 
 ##
+
+### Zadanie 9 Chmura (do Zadania 5)
+
+✅ 3.0 Należy stworzyć odpowiednie instancje po stronie chmury na dockerze [Link do commita 1](https://github.com/02franek/projektowanie-obiektowe/commit/9de8bb31690a3433266bd1d33ffa837d8e39a299)
+
+❌ 3.5 Stworzyć odpowiedni pipeline w Github Actions do budowania aplikacji
+
+❌ 4.0 Dodać notyfikację mailową o zbudowaniu aplikacji
+
+❌ 4.5 Dodać krok z deploymentem aplikacji serwerowej oraz klienckiej na chmurę
+
+❌ 5.0 Dodać uruchomienie regresyjnych testów automatycznych (funkcjonalnych) jako krok w Actions
+###
+Kod: [Link do zadania 5](https://github.com/02franek/projektowanie-obiektowe/tree/main/zadanie_5)
+
+##
